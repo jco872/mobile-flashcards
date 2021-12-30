@@ -16,7 +16,7 @@ This Mobile application lets users create card decks that contain questions and 
 
 **Testing**
 
-* This project was tested on the web only.  I couldn't get the simulators to work.
+* This project was tested on IOS.
 
 **Contributing**
 
