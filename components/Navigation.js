@@ -1,8 +1,8 @@
 import React from 'react';
-import {  createBottomTabNavigator } from 'react-navigation-tabs';
-import {createStackNavigator } from 'react-navigation-stack';
+import { createBottomTabNavigator } from 'react-navigation-tabs';
+import { createStackNavigator } from 'react-navigation-stack';
 import { Ionicons } from '@expo/vector-icons';
-import {createAppContainer} from 'react-navigation';
+import { createAppContainer } from 'react-navigation';
 import Decks from './Decks';
 import AddDeck from './AddDeck';
 import Deck from './Deck';
@@ -15,7 +15,7 @@ const Tabs = createBottomTabNavigator({
 	Decks: {
 		  screen: Decks,
 		  navigationOptions: {
-			  tabBarLabel: 'Deck List',
+			  tabBarLabel: 'All Decks',
 			  tabBarIcon: () => <Ionicons size={35}
 			   style={{width: 25}} color={black} name="ios-albums"/>
 		  }
@@ -23,7 +23,7 @@ const Tabs = createBottomTabNavigator({
 	AddDeck: {
 		  screen: AddDeck,
 		  navigationOptions: {
-			  tabBarLabel: 'New deck',
+			  tabBarLabel: 'New Deck',
 			  tabBarIcon: () => <Ionicons size={35} 
 			  style={{width: 25}} color={black} name="ios-add-circle"/>
 		  }

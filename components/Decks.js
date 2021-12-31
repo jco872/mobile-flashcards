@@ -1,10 +1,10 @@
 import React, { Component } from 'react'
-import { View, Text, ScrollView } from 'react-native'
+import { View, Text, ScrollView, StyleSheet } from 'react-native'
 import { connect } from 'react-redux'
 import { getDecks } from '../utils/api'
 import { loadDecks } from '../actions'
 import DeckCard from './DeckCard'
-import styles from '../utils/styles'
+import { black, white } from '../utils/colors'
 
 class Decks extends Component {
   componentDidMount() {
@@ -14,7 +14,6 @@ class Decks extends Component {
       .then((decks) => dispatch(loadDecks(decks)))
   }
 
-
   render() {
     const { decks } = this.props
 
@@ -22,7 +21,7 @@ class Decks extends Component {
       <View style={ styles.DecksContainer }>
         <ScrollView>
           <Text style={ styles.DecksHeader }>Decks</Text>
-          { Object.keys(decks).map((deckName) => (
+          { Object.keys(decks).map(deckName => (
             <DeckCard
               key={ deckName }
               title={ decks[deckName].title }
@@ -42,3 +41,19 @@ function mapStateToProps(decks) {
 }
 
 export default connect(mapStateToProps)(Decks)
+
+const styles = StyleSheet.create({
+  DecksContainer: {
+    flex: 1,
+    backgroundColor: white,
+  },
+  DecksHeader: {
+    fontSize: 36,
+    fontWeight: '700',
+    marginTop: 20,
+    marginBottom: 15,
+    color:black,
+    marginLeft: 20,
+    marginRight: 20
+  },
+});

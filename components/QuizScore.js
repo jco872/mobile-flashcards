@@ -1,21 +1,19 @@
 import React from 'react'
-import { View, Text } from 'react-native'
+import { View, Text, StyleSheet } from 'react-native'
 import TextButton from './TextButton'
-import { black} from '../utils/colors'
-import styles from '../utils/styles'
-
+import { black, white } from '../utils/colors'
 
 export default function QuizScore({
-  correctAnsCount,
-  incorrectAnsCount,
+  correctAnswers,
+  incorrectAnswers,
   restartQuiz,
   backToDeck 
 }) 
 {
-  const QutCount = correctAnsCount + incorrectAnsCount
-  const percentage = (correctAnsCount / QutCount) * 100
+  const totalAnswers = correctAnswers + incorrectAnswers
+  const percentage = (correctAnswers / totalAnswers) * 100
 
-  return(
+  return (
     <View style={ [styles.QuizResultContainer, { justifyContent: 'space-around'}] }>
       <Text style={ styles.QuizResultHeader }>Quiz Results</Text>
       <View style={{ justifyContent: 'space-around' }}>
@@ -28,7 +26,7 @@ export default function QuizScore({
               Correct:
           </Text>
           <Text style={ styles.QuizResultsDetails }>
-              { correctAnsCount } out of { QutCount }
+              { correctAnswers } out of { totalAnswers }
           </Text>
         </View>
         <View style={{ flexDirection: 'row', justifyContent: 'space-around' }}>
@@ -36,7 +34,7 @@ export default function QuizScore({
           Wrong:
           </Text>
           <Text style={ styles.QuizResultsDetails }>
-            { incorrectAnsCount } out of { QutCount }
+            { incorrectAnswers } out of { totalAnswers }
           </Text>
         </View>
       </View>
@@ -56,3 +54,29 @@ export default function QuizScore({
   )
 }
 
+const styles = StyleSheet.create({  
+  QuizResultContainer: {
+    flex: 1,
+    backgroundColor: white
+  },
+  QuizResultHeader: {
+    fontSize: 36,
+    fontWeight: '700',
+    textAlign: 'center',
+    color: black,
+    marginBottom: 15,
+    marginTop: 30
+  },
+  QuizResultsDetails: {
+    fontSize: 30,
+    fontWeight: '700',
+    textAlign: 'center',
+    color: black
+  },
+  QuizResultButton: {
+    borderRadius: 2,
+    marginLeft: 20,
+    marginRight: 20,
+    marginBottom: 15
+  }
+});
